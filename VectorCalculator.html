@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Vector Calculator</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/vectorcalcstyle.css">
+
+</head>
+<body>
+
+<div class="container">
+
+
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h1 class = "col-sm-offset-4">Vector Calculator</h1>
+		</div>
+	</div>
+
+	<ul id="myTab" class="nav nav-pills nav-justified">
+		<li class="active"><a href="#home" data-toggle="tab">Calculator</a></li>
+		<li><a href="#profile" data-toggle="tab">Information</a></li>
+	</ul>
+  
+	<div class = "solidline"></div>
+  
+	<div id="myTabContent" class="tab-content">  
+
+
+		<div class="tab-pane fade in active" id="home">
+
+	
+			<div class="form-group">	
+			<label> Please select one type of input:</label><br/><br/>
+			<label for="chkEachVect">
+				<input type="radio" class = "radio1" id="singleVect" name="inputvector" value="chk" checked ="checked" />
+				Vector Values for 'X'
+			</label>
+			<label for="chkEachVect">
+				<input type="radio"  class = "radio1" id="minSpMax" name="inputvector" value="chk2" />
+				3-tuple (Minimum Number, Spacing, Maximum Number)
+			</label>
+
+			<label for="chkEachVect">
+				<input type="radio"  class = "radio1" id="minSpTot"  name="inputvector" value="chk3" />
+				3-tuple (Minimum Number, Spacing, Number of elements)
+			</label>
+			</div>
+
+
+			<hr />
+
+			<div id="eachVector" class="hideData">
+				<div class="form-group">
+					<label>Enter the values for the vector 'X': </label> (Use space as a seperator)<br/>
+					<input type="text" class="col-xs-5" id="eachVectorString" name ="eachVectorString">
+					<br/>
+				</div> 
+
+				<div>
+					<label id= "singleInputVectorErr" class="hideData" >Please enter valid numbers</label> <br/><br/>
+				</div>
+
+			</div>
+
+			<div id="eachVector2" class="hideData">
+				<label>Enter the values for 3-tuple:</label>  <br/><br/>
+
+				<label>
+				Minimum Number <br/>
+					<input type="text" id="minSpacingMinInput" />
+				</label>
+
+				<label>
+				Spacing<br/>
+					<input type="text" id="minSpacingSpacInput" />
+				</label>
+
+				<label>
+				Maximum Number<br/>
+					<input type="text" id="minSpacingMaxInput" />
+				</label>
+
+				<br/><br/>
+
+				<!--<button type="button" class="btn btn-primary btn-sm" id="generateVector">Generate</button> <br/>-->
+				<label   id= "lblVectorErr" class="hideData" >Max cannot be less than or equal to Min</label> <br/><br/>
+				<label   id= "lblVectorErr2" class="hideData" >Max cannot be less than or equal to Spacing</label><br/><br/>
+				<label   id= "lblVectorErr3" class="hideData" >Please enter valid numbers</label><br/><br/>
+				<label   id= "lblVectorErr4" class="hideData" >This combination of data is not valid</label>
+
+
+			</div>
+
+			<div id="eachVector3" class="hideData">
+				<label>Enter the values for 3-tuple:</label>  <br/><br/>
+
+				<label>
+				Minimum Number <br/>
+					<input type="text" id="numSpacingMinInput" />
+				</label>
+
+				<label>
+				Spacing<br/>
+					<input type="text" id="numSpacingSpacInput" />
+				</label>
+
+				<label>
+				Number of Elements<br/>
+					<input type="text" id="numSpacingNumInput" />
+				</label>
+
+				<br/><br/>
+
+				<label   id= "lblNumVectorErr" class="hideData" >Number of elements should be greater than zero</label> <br/><br/>
+				<label   id= "lblNumVectorErr3" class="hideData" >Please enter valid numbers</label>
+			</div>
+
+			<br/>
+			<br/>
+
+
+
+
+
+			<div class = "solidline">  </div>
+
+			<div class="row">
+				<div class="col-xs-9">
+					<label> Select operations to be performed on the input vector X:</label>(Please enter formula interms of X only)<br/>
+
+					<button type="button" class="btn btn-primary btn-sm" name="plus" id="plus" value="+" >+</button> 
+					<button type="button" class="btn btn-primary btn-sm" name="minus" id="minus"value="-">-</button>
+					<button type="button" class="btn btn-primary btn-sm" name="multiply" id="multiply" value="*">*</button>
+					<button type="button" class="btn btn-primary btn-sm" name="divide" id="divide" value="/">/</button>
+					<button type="button" class="btn btn-primary btn-sm" name="sqrt" id="sqrt" value="sqrt( )">sqrt</button>
+					<button type="button" class="btn btn-primary btn-sm" name="pow" id="pow" value="pow( )">pow</button>
+					<button type="button" class="btn btn-primary btn-sm" name="percentage" id="percentage" value="%">%</button>
+					<button type="button" class="btn btn-primary btn-sm" name="leftbrace" id="leftbrace" value="(">(</button>
+					<button type="button" class="btn btn-primary btn-sm" name="rightbrace" id="rightbrace" value=")">)</button>
+					<button type="button" class="btn btn-primary btn-sm" name="ceil" id="ceil" value="ceil( )">ceil</button>
+					<button type="button" class="btn btn-primary btn-sm" name="floor" id="floor" value="floor( )">floor</button>
+					<button type="button" class="btn btn-primary btn-sm" name="round" id="round" value="round( )">round</button>
+					<button type="button" class="btn btn-primary btn-sm" name="max" id="max" value="max( )">max</button>
+					<button type="button" class="btn btn-primary btn-sm" name="min" id="min" value="min( )">min</button>
+					<button type="button" class="btn btn-primary btn-sm" name="abs" id="abs" value="abs( )">abs</button>
+					
+                    <!--ceil, floor, max, min , abs, round-->
+					<br/><br/>
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-7"> <!-- left margin is added by default)-->
+					<textarea class="form-control" id="formulaText" name = "formulaText" rows="2" ></textarea>
+				    <br/>
+				</div>
+
+
+			    <br/><br/>
+
+				<div class="col-xs-7"> 
+					<div class="rightalign"> 
+						<button type="button" class="btn btn-primary btn-sm" id="clearFormula">Clear</button>
+						<button type="button" class="btn btn-primary btn-sm" id="calculateResult">Calculate Result</button>
+					</div>
+				</div> 
+				
+				<br/>
+				<div class="col-xs-7">
+				<label   id= "formulaError" class="hideData" >Please enter valid formula</label>
+				<br/>
+				<label   id= "formulaErrorX" class="hideData" >Please enter formula in terms of X</label>
+				</div>
+			</div>
+
+
+
+			<br/><br/>
+
+			<label id= "lblBracesError" class="hideData" >Paranthesis is not matching</label>
+
+			<br/>
+
+
+            <!--Results-->
+
+			<div class = "solidline">  </div>
+ 
+			<div class="resultsalign">
+			
+				<div class="tablealign">
+					<table class="table table-striped" id="table_div"  >
+					</table>
+					<div id="dynamictable" class="hideData" ></div>
+				</div>
+			</div>
+			
+			<div class="resultsalign">
+			<!--Right--> 
+				<div id="columnchart_material" class="graphalign"></div>
+			</div>
+ 
+ 
+
+ 
+		</div> <!--Home Div-->
+ 
+		<div class="tab-pane fade" id="profile">
+			<h3>Additional Information and Assumptions</h3>
+
+			<ul>
+				<li>The input vector is represented by X and can be entered in three ways</li>
+				<br/> 
+				<ol>
+					<li> Each individual element of X can be entered with spaces by choosing the option - Vector Values for 'X'</li>
+					<li> Vector can be dynamically created through 3-tuple (Minimum Number, Spacing, Maximum Number) </li>
+					<li> Vector can be dynamically created through 3-tuple (Minimum Number, Spacing, Number of elements)</li>
+				</ol>
+				<br/> 
+				<br/>		
+				<li> After the Vector data is validated, a customized formula can be created only in terms of X (Vector entered by the user) </li>	
+				<br/>
+
+				<li> Formula can be created either through Keyboard or by functions provided through buttons  </li>	
+				<br/>
+
+				<li> Once the Formula is composed, click on Calculate Result button - Results with scroll along graph will be displayed on the same page .</li>
+			</ul>
+
+		</div>
+  
+	</div><!-- tab div group--> 
+</div> <!--container div-->
+
+<script src="javascript/VecCalcJavaScript.js"></script>
+</body>
+</html>
